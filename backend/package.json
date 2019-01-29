@@ -4,7 +4,8 @@
   "description": "An example web proyect to learn Angular, NodoJS, Express & MongoDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "Vicente Heriberto Olivares Arroyo",
   "license": "MIT",
