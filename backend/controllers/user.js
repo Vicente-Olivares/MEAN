@@ -6,6 +6,20 @@ function test(req,res){
     res.status(200).send({message:'message from the controller'});
 }
 
+function getUsers(req,res){
+    User.find((err,users)=>{
+        if(err){
+            res.status(500).send({message:'There is an error on the server'});
+        }else{
+            if(!users){
+                res.status(404).send({message:'The user information is incomplete'});
+            }else{
+                res.status(200).send({users});
+            }
+        }
+    })
+}
+
 function saveUser(req,res){
     let user = new User();
     let params = req.body;
@@ -30,7 +44,43 @@ function saveUser(req,res){
     });
 }
 
+function updateUser(req,res){
+    let userId = req.params.id;
+    let params = req.body;
+
+    User.findByIdAndUpdate(userId,params,(err,updatedUser)=>{
+        if(error){
+            res.status(500).send({message:'There is an error on the server'});
+        }else{
+            if(!updatedUser){
+                res.status(404).send({message:'There user doesn`t exit'});
+            }else{
+                res.status(200).send({user:updatedUser});
+            }
+        }
+    });
+}
+
+function deleteUser(req,res){
+    let userId = req.params.id;
+
+    User.findByIdAndRemove(userId, (err,deletedUser)=>{
+        if(error){
+            res.status(500).send({message:'There is an error on the server'});
+        }else{
+            if(!deletedUser){
+                res.status(404).send({message:'There user doesn`t exit'});
+            }else{
+                res.status(200).send({user:deletedUser});
+            }
+        }
+    });
+}
+
 module.exports = {
     test,
-    saveUser
+    saveUser,
+    getUsers,
+    updateUser,
+    deleteUser
 }
