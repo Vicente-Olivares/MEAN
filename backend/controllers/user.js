@@ -48,7 +48,7 @@ function updateUser(req,res){
     let userId = req.params.id;
     let params = req.body;
 
-    User.findByIdAndUpdate(userId,params,(err,updatedUser)=>{
+    User.findByIdAndUpdate(userId,params,(error,updatedUser)=>{
         if(error){
             res.status(500).send({message:'There is an error on the server'});
         }else{
@@ -64,7 +64,7 @@ function updateUser(req,res){
 function deleteUser(req,res){
     let userId = req.params.id;
 
-    User.findByIdAndRemove(userId, (err,deletedUser)=>{
+    User.findByIdAndRemove(userId, (error,deletedUser)=>{
         if(error){
             res.status(500).send({message:'There is an error on the server'});
         }else{
