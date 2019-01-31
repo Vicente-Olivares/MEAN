@@ -8,7 +8,7 @@ let userSchema = Schema({
     lastName:String,
     email:String,
     password:String,
-    role:String,
+    rol:String,
     image:String
 });
 
