@@ -10,10 +10,13 @@ app.use(bodyParser.json());
 //LOAD ROUTES
 let UserRoutes = require('./routes/user');
 
+let ProductRoutes = require('./routes/product');
+
 
 //HEADERS CONFIGURATIONS (CORS)
 
 
 app.use('/system', UserRoutes);
+app.use('/system', ProductRoutes);
 
 module.exports = app;
