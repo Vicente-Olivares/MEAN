@@ -6,8 +6,10 @@ let express = require('express');
 
 let api = express.Router();
 
-api.get('/product', ProductController.test);
+api.get('/productTest', ProductController.test);
 
 api.post('/product', ProductController.saveProduct);
+
+api.get('/product', ProductController.getProduct);
 
 module.exports = api;

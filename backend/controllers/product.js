@@ -18,7 +18,7 @@ function saveProduct(req,res){
 
     product.save((error, savedProduct)=>{
         if(error){
-            res.status(500).send({message:'Rhere is an error on the server'});
+            res.status(500).send({message:'There is an error on the server'});
         } else {
             if(!savedProduct){
                 res.status(404).send({message: 'The information is incomplete'});
@@ -29,7 +29,22 @@ function saveProduct(req,res){
     });
 }
 
+function getProduct(req,res){
+    Product.find((error,products)=>{
+        if(error){
+            res.status(500).send({message:'There is an error on the server '});
+        }else{
+            if(!products){
+                res.satus(404).send({message:'Fild not finded'})
+            }else {
+                res.status(200).send({products});
+            }
+        }
+    });
+}
+
 module.exports ={
     test,
-    saveProduct
+    saveProduct,
+    getProduct
 }
