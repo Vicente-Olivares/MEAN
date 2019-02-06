@@ -35,7 +35,7 @@ function getProduct(req,res){
             res.status(500).send({message:'There is an error on the server '});
         }else{
             if(!products){
-                res.satus(404).send({message:'Fild not finded'})
+                res.satus(404).send({message:'Information not found'})
             }else {
                 res.status(200).send({products});
             }
