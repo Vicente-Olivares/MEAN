@@ -35,9 +35,26 @@ function getProduct(req,res){
             res.status(500).send({message:'There is an error on the server '});
         }else{
             if(!products){
-                res.satus(404).send({message:'Information not found'})
+                res.satus(404).send({message:'Information not found'});
             }else {
                 res.status(200).send({products});
+            }
+        }
+    });
+}
+
+function updateProduct(req,res){
+    let productId = req.params.id;
+    let params = req.body;
+
+    Product.findByIdAndUpdate(productId,params,(error,updatedProduct)=>{
+        if(error){
+            res.status(500).send({message:'There is an error on the server '});
+        }else{
+            if(!updatedProduct){
+                res.satus(404).send({message:"The product doesn't exist"});
+            }else {
+                res.status(200).send({updatedProduct});
             }
         }
     });
@@ -46,5 +63,6 @@ function getProduct(req,res){
 module.exports ={
     test,
     saveProduct,
-    getProduct
+    getProduct,
+    updateProduct
 }

@@ -12,4 +12,6 @@ api.post('/product', ProductController.saveProduct);
 
 api.get('/product', ProductController.getProduct);
 
+api.put('/product/:id', ProductController.updateProduct);
+
 module.exports = api;
