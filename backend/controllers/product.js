@@ -37,7 +37,7 @@ function getProduct(req,res){
             if(!products){
                 res.satus(404).send({message:'Information not found'});
             }else {
-                res.status(200).send({products});
+                res.status(200).send({product:products});
             }
         }
     });
@@ -54,7 +54,23 @@ function updateProduct(req,res){
             if(!updatedProduct){
                 res.satus(404).send({message:"The product doesn't exist"});
             }else {
-                res.status(200).send({updatedProduct});
+                res.status(200).send({product:updatedProduct});
+            }
+        }
+    });
+}
+
+function deleteProduct(req,res){
+    let productId = req.params.id;
+
+    Product.findByIdAndRemove(productId,(error,deletedProduct)=>{
+        if(error){
+            res.status(500).send({message:'There is an error on the server '});
+        }else{
+            if(!deletedProduct){
+                res.satus(404).send({message:"The product doesn't exist"});
+            }else {
+                res.status(200).send({product:deletedProduct});
             }
         }
     });
@@ -64,5 +80,6 @@ module.exports ={
     test,
     saveProduct,
     getProduct,
-    updateProduct
+    updateProduct,
+    deleteProduct
 }

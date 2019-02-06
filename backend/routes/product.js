@@ -14,4 +14,6 @@ api.get('/product', ProductController.getProduct);
 
 api.put('/product/:id', ProductController.updateProduct);
 
+api.delete('/product/:id', ProductController.deleteProduct);
+
 module.exports = api;
