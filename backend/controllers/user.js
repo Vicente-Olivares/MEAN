@@ -4,6 +4,10 @@ let User = require('../models/user');
 
 let bcrypt = require('bcrypt-nodejs');
 
+let fs = require('fs');
+
+let path = require('path');
+
 function test(req,res){
     res.status(200).send({message:'message from the controller'});
 }
@@ -90,10 +94,25 @@ function deleteUser(req,res){
     });
 }
 
+function saveUserImage(req,res){
+    let userId = req.params.id;
+    let fileName = 'No Subido ...';
+
+    if(req.files){
+        //console.log(req.files);
+        let filePath = req.files.image.path;
+        let fileSplit = filePath.split('\\');
+        
+    }else{
+        res.status(404).send({message: 'Please upload an image'});
+    }
+}
+
 module.exports = {
     test,
     saveUser,
     getUsers,
     updateUser,
-    deleteUser
+    deleteUser,
+    saveUserImage
 }
