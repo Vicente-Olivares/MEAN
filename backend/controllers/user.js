@@ -99,9 +99,9 @@ function saveUserImage(req,res){
     let fileName = 'No Subido ...';
 
     if(req.files){
-        //console.log(req.files);
-        let filePath = req.files.image.path;
-        let fileSplit = filePath.split('\\');
+        console.log(req.files);
+        //let filePath = req.files.image.path;
+        //let fileSplit = filePath.split('\\');
         
     }else{
         res.status(404).send({message: 'Please upload an image'});
