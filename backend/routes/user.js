@@ -17,6 +17,6 @@ api.put('/user/:id', UserController.updateUser);
 
 api.delete('/user/:id', UserController.deleteUser);
 
-api.put('/userImage/', md_upload, UserController.saveUserImage);
+api.put('/userImage/:id', md_upload, UserController.saveUserImage);
 
 module.exports = api;

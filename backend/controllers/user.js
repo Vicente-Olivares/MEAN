@@ -99,9 +99,29 @@ function saveUserImage(req,res){
     let fileName = 'No Subido ...';
 
     if(req.files){
-        console.log(req.files);
-        //let filePath = req.files.image.path;
-        //let fileSplit = filePath.split('\\');
+        //console.log(req.files);
+        let filePath = req.files.image.path;
+        let fileSplit = filePath.split('\\');
+        let fileName = fileSplit[2];
+
+        let extSplit = fileName.split('\.');
+        let extFile = extSplit[1];
+
+        if(extFile == 'png'|| extFile == 'jpg'|| extFile =='jpeg'){
+            User.findByIdAndUpdate(userId,{image:fileName},(err,updatedUser)=>{
+                if(err){
+                    res.status(500).send({message: 'The is an error on the server'});
+                }else{
+                    if(!updatedUser){
+                        res.status(404).send({message: 'There user doesn`t exit'});
+                    }else{
+                        res.status(200).send({user:updatedUser});
+                    }
+                }
+            });
+        }else{
+            res.status(404).send({message: 'The file extension is not valid'});
+        }
         
     }else{
         res.status(404).send({message: 'Please upload an image'});
