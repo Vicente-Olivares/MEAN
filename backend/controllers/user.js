@@ -64,18 +64,40 @@ function saveUser(req,res){
 function updateUser(req,res){
     let userId = req.params.id;
     let params = req.body;
+    
+    if(params.password){
+        bcrypt.hash(params.password,null,null,(err,hash)=>{
+            params.password = hash;
 
-    User.findByIdAndUpdate(userId,params,(error,updatedUser)=>{
-        if(error){
-            res.status(500).send({message:'There is an error on the server'});
-        }else{
-            if(!updatedUser){
-                res.status(404).send({message:'There user doesn`t exit'});
+            User.findByIdAndUpdate(userId,params,(error,updatedUser)=>{
+                if(error){
+                    res.status(500).send({message:'There is an error on the server'});
+                }else{
+                    if(!updatedUser){
+                        res.status(404).send({message:'There user doesn`t exit'});
+                    }else{
+                        res.status(200).send({user:updatedUser});
+                    }
+                }
+            });
+        }); 
+              
+    }else{
+
+        user.save((error,savedUser)=>{
+            if(error){
+                res.status(500).send({message:'There is an error on the server'});
             }else{
-                res.status(200).send({user:updatedUser});
+                if(!savedUser){
+                    res.status(404).send({message:'The user information is incomplete'});
+                }else{
+                    res.status(200).send({user:savedUser});
+                }
             }
-        }
-    });
+        });
+    }
+
+   
 }
 
 function deleteUser(req,res){
