@@ -128,11 +128,48 @@ function saveUserImage(req,res){
     }
 }
 
+function getUserImage(req,res){
+    let imageFile = req.params.imageFile;
+    let filePath = './uploads/users/' + imageFile;
+
+    fs.exists(filePath,(exists)=>{
+        (exists)? res.sendFile(path.resolve(filePath)) : res.status(200).send({message: 'The image doesn´t exist'});
+    });
+}
+
+function userLogin(req,res){
+    let params = req.body;
+
+    let email = params.email;
+    let password = params.password;
+
+    User.findOne({email:email.toLowerCase()},(err,user)=>{
+        if(err){
+            res.status(500).send({message:'There is an error on the server'});
+        }else{
+            if(!user){
+                res.status(404).send({message: 'There user doesn´t exists'});
+            }else{
+                bcrypt.compare(password,user.password,(err,check)=>{
+                    if(check){
+                        res.status(200).send(user);
+                    }else{
+                        res.status(200).send({message: 'User or Password are invalid'});
+                    }
+                });
+            }
+        }
+    });
+}
+
+
 module.exports = {
     test,
     saveUser,
     getUsers,
     updateUser,
     deleteUser,
-    saveUserImage
+    saveUserImage,
+    getUserImage,
+    userLogin
 }

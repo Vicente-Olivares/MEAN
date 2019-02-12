@@ -19,4 +19,8 @@ api.delete('/user/:id', UserController.deleteUser);
 
 api.put('/userImage/:id', md_upload, UserController.saveUserImage);
 
+api.get('/userImage/:imageFile',UserController.getUserImage);
+
+api.post('/login',UserController.userLogin);
+
 module.exports = api;
