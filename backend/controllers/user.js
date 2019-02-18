@@ -141,14 +141,16 @@ function userLogin(req,res){
             } else {
                 bcrypt.compare(password,user.password,(err,check)=>{
                     if(check){
-                        if(params.getHash){
+                       /* if(params.getHash){
                             res.status(200).send({
                                 token:jwt.createToken(user)
                             });
                         } else {
                             res.status(200).send({user});
-                        }
-                        
+                        }*/
+                        res.status(200).send({user,
+                            token:jwt.createToken(user)
+                        });
                     } else {
                         res.status(200).send({message:'The user or password are invalid'});
                     }
