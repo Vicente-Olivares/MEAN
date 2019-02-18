@@ -1,11 +1,10 @@
 'use strict';
 
 let mongoose = require('mongoose');
-
 let Schema = mongoose.Schema;
 
 let storeSchema = Schema({
-    name:String, //<- Sucursal de la tienda 
+    name:String,
     address:String,
     zipCode:Number,
     city:String,
@@ -13,4 +12,4 @@ let storeSchema = Schema({
     email:String
 });
 
-module.exports = mongoose.model('store', storeSchema);
+module.exports = mongoose.model('store',storeSchema);

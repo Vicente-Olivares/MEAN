@@ -1,13 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "An example web proyect to learn Angular, NodoJS, Express & MongoDB",
+  "description": "An example proyect to learn Angular,NodeJS,Express and Mongodb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Vicente Heriberto Olivares Arroyo",
+  "author": "Vicente Olivares",
   "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -16,7 +16,7 @@
     "express": "^4.16.4",
     "jwt-simple": "^0.5.5",
     "moment": "^2.24.0",
-    "mongoose": "^5.4.13"
+    "mongoose": "^5.4.7"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
