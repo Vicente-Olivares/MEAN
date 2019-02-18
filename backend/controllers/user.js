@@ -8,6 +8,8 @@ let fs = require('fs');
 
 let path = require('path');
 
+let jwt = require('../services/jwt');
+
 function test(req,res){
     res.status(200).send({message:'message from the controller'});
 }
@@ -174,7 +176,14 @@ function userLogin(req,res){
             }else{
                 bcrypt.compare(password,user.password,(err,check)=>{
                     if(check){
-                        res.status(200).send(user);
+                        if(params.getHash){
+                            res.status(200).send({
+                                token:jwt.createToken(user)
+                            });
+                        }else{
+                            res.status(200).send({user});
+                        }
+                       
                     }else{
                         res.status(200).send({message: 'User or Password are invalid'});
                     }

@@ -12,11 +12,14 @@ let UserRoutes = require('./routes/user');
 
 let ProductRoutes = require('./routes/product');
 
+let StoreRoutes = require('./routes/store');
+
 
 //HEADERS CONFIGURATIONS (CORS)
 
 
 app.use('/system', UserRoutes);
 app.use('/system', ProductRoutes);
+app.use('/system', StoreRoutes);
 
 module.exports = app;
