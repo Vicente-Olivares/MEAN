@@ -21,7 +21,7 @@ function saveEmployee(req,res){
         if(error){
             res.status(500).send({message: 'There is an error on the server'});
         }else{
-            (!employees)? res.status(404).send({message:'The employees is empty'}) :
+            (!savedEmployees)? res.status(404).send({message:'The employees is empty'}) :
             res.status(200).send({employee:savedEmployees});
         }
     });
@@ -32,7 +32,7 @@ function getEmployees(req,res){
     Employee.find((error,employees)=>{
         (error)? res.status(500).send({message: 'There is an error on the server'}) :
         (!employees)? res.status(404).send({message: 'The collection employee doesn´t exist'}) :
-        res,status(200).send({employees});
+        res.status(200).send({employees});
     });
 }
 

@@ -580,6 +580,92 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "saveEmployee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Pedro",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Mijares",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "32",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "pedro@example.com",
+							"type": "text"
+						},
+						{
+							"key": "jobTitle",
+							"value": "gerente",
+							"type": "text"
+						},
+						{
+							"key": "store",
+							"value": "5c6aeb53d4252608a00e61fc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/system/employee",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"system",
+						"employee"
+					]
+				},
+				"description": "Guardar los empleados de una tienda"
+			},
+			"response": []
+		},
+		{
+			"name": "getEmployees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/system/employee",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"system",
+						"employee"
+					]
+				},
+				"description": "Obtener los empleados guardados"
+			},
+			"response": []
 		}
 	]
 }
