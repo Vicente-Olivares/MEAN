@@ -29,15 +29,48 @@ function saveEmployee(req,res){
 }
 
 function getEmployees(req,res){
-    Employee.find((error,employees)=>{
+    let employeeId = req.params.id;
+    let find = (!employeeId)? Employee.find() : Employee.findById(employeeId);
+    
+    /* Employee.find((error,employees)=>{
         (error)? res.status(500).send({message: 'There is an error on the server'}) :
         (!employees)? res.status(404).send({message: 'The collection employee doesn´t exist'}) :
         res.status(200).send({employees});
+    }); */
+
+    find.populate({path:'store'}).exec(((error,employees)=>{
+        (error)? res.status(500).send({message: 'There is an error on the server'}) :
+        (!employees)? res.status(404).send({message: 'The collection employee doesn´t exist'}) :
+        res.status(200).send({employees});
+    }));
+}
+
+function updateEmployee(req,res){
+    let employeeId = req.params.id;
+    let params = req.body;
+
+    Employee.findByIdAndUpdate(employeeId,params,(error,updatedEmployee)=>{
+        (error)? res.status(500).send({message:'There is an error on the server'}) :
+        (!updatedEmployee)? res.status(404).send({message:'The employee doesn´t exist'}) :
+        res.status(200).send({updatedEmployee});
     });
+}
+
+function deleteEmployee(req,res){
+    let employeeId = req.params.id;
+
+    Employee.findByIdAndRemove(employeeId,(err,deletedEmployee)=>{
+        (err)? res.status(500).send({message:'There is an error on the server'}) :
+        (!deletedEmployee)? res.status(404).send({message: 'The employee doesn´t exist'}) :
+        res.status(200).send({deletedEmployee});
+    });
+
 }
 
 module.exports={
     test,
     saveEmployee,
-    getEmployees
+    getEmployees,
+    updateEmployee,
+    deletedEmployee
 }
