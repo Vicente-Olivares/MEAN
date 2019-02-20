@@ -72,5 +72,5 @@ module.exports={
     saveEmployee,
     getEmployees,
     updateEmployee,
-    deletedEmployee
+    deleteEmployee
 }

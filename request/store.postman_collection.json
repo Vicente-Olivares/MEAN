@@ -598,27 +598,27 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "Pedro",
+							"value": "Guadalupe",
 							"type": "text"
 						},
 						{
 							"key": "lastName",
-							"value": "Mijares",
+							"value": "Gonzalez",
 							"type": "text"
 						},
 						{
 							"key": "age",
-							"value": "32",
+							"value": "28",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "pedro@example.com",
+							"value": "guadalupe@example.com",
 							"type": "text"
 						},
 						{
 							"key": "jobTitle",
-							"value": "gerente",
+							"value": "Auxiliar Contable",
 							"type": "text"
 						},
 						{
@@ -653,17 +653,79 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/system/employee",
+					"raw": "localhost:3000/system/employee/",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"system",
-						"employee"
+						"employee",
+						""
 					]
 				},
 				"description": "Obtener los empleados guardados"
+			},
+			"response": []
+		},
+		{
+			"name": "updateEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "jobTitle",
+							"value": "Desarrollo de sofware",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/system/employee/5c6c36a2bce9c541b4756aaa",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"system",
+						"employee",
+						"5c6c36a2bce9c541b4756aaa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteEmployee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/system/employee/5c6c36a2bce9c541b4756aaa",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"system",
+						"employee",
+						"5c6c36a2bce9c541b4756aaa"
+					]
+				}
 			},
 			"response": []
 		}

@@ -13,6 +13,6 @@ api.get('/employee/:id?', EmployeeController.getEmployees);
 
 api.put('/employee/:id', EmployeeController.updateEmployee);
 
-api.delete('/employee/:id', EmployeeController.deletedEmployee);
+api.delete('/employee/:id', EmployeeController.deleteEmployee);
 
 module.exports = api;
