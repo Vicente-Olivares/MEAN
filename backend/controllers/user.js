@@ -123,7 +123,8 @@ function getUserImage(req,res){
     let imageFile = req.params.imageFile;
     let filePath = './uploads/users/' + imageFile;
     fs.exists(filePath,(exist)=>{
-        (exist)? res.sendFile(path.resolve(filePath)) : res.status(200).send({message:'The image doesn´t exist'});
+        (exist)? res.sendFile(path.resolve(filePath)) :
+         res.status(200).send({message:'The image doesn´t exist'});
     });
 }
 
