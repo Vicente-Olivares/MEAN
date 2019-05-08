@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from './models/user';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'frontend';
+  public user: User;
+
+  constructor(
+    private userService:UserService
+  ){
+    this.user = new User("","","","","","");
+  }
+   
+  public test(){
+    console.log("Se ejecuto el metodo con exito");
+  }
+
+  public onSubmit(){
+    //console.log(this.user);
+    this.userService.signUp();
+  }
+
 }
