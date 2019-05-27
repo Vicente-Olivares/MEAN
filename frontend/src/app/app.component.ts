@@ -7,7 +7,8 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
   public user: User;
 
   constructor(
@@ -22,7 +23,14 @@ export class AppComponent {
 
   public onSubmit(){
     //console.log(this.user);
-    this.userService.signUp();
+    this.userService.signUp(this.user).subscribe(
+      response =>{
+        console.log(response);
+      },
+      error =>{
+        console.log(error);
+      }
+    );
   }
-
+  
 }

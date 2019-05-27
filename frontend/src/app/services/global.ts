@@ -1,3 +1,3 @@
 export let Global ={
-    url: 'http://localhost:3000/system'
+    url: 'http://localhost:3000/system/'
 }
