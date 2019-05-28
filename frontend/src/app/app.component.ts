@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 
@@ -8,7 +8,8 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css'],
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit { 
+
   public user: User;
 
   constructor(
@@ -33,4 +34,6 @@ export class AppComponent implements OnInit {
     );
   }
   
+  ngOnInit(): void {
+  }
 }

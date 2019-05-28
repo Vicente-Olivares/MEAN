@@ -22,7 +22,9 @@ export class UserService {
 
     let params = JSON.stringify(loginUser);
     
-    let headers = new HttpHeaders({'Content-type':'application/json'});
+    let headers = new HttpHeaders(
+      {'Content-type':'application/json'} 
+      );
     
    return this.http.post(this.url + 'login',params,{headers}).pipe(
       map(res => res)
